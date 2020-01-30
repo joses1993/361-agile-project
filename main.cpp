@@ -7,10 +7,13 @@ int main()
 {
 
     climate a;
+    cout << "initial stats: ";
     a.printClimate();
 
-
-    a.setFridgeTemp(59.8);
+    a.setHumidity(10.5);
+    a.setFreezerTemp(20.8);
+    a.setFridgeTemp(30.8);
     a.printClimate();
+
     return 0;
 }
