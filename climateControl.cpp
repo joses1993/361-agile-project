@@ -4,8 +4,9 @@ climateControl::climateControl()
 {
     //ctor
 
-    utcTime();
+    climateEntry newEntry(0.0,0.0,0.0, utcTime());
     std::ifstream checkCsv("currentClimate.csv");
+    std::ifstream checkLogFile("climateLog.csv");
 
     if(checkCsv.good())
     {
@@ -16,9 +17,7 @@ climateControl::climateControl()
         std::ofstream csv("currentClimate.csv");
 
         cout << "No Previous Data Found" << endl;
-        climateEntry newEntry(0.0,0.0,0.0, utcTime());
         saveClimateToFile( newEntry);
-
     }
 
 }
@@ -27,13 +26,15 @@ void climateControl::saveClimateToFile(climateEntry entry)
 {
 
     ofstream csv("currentClimate.csv");
+    ofstream log("climateLog.csv", ofstream::app);
 
     string data =  std::to_string(entry.getHumidity()) +
     "," + std::to_string(entry.getFreezer()) +
     "," + std:: to_string(entry.getFridge()) +
-     "," + entry.getTime();
+     "," + entry.getTime() + "\n";
 
     csv << data;
+    log << data;
 
 }
 
