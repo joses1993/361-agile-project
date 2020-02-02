@@ -1,6 +1,8 @@
 #ifndef CLIMATE_H
 #define CLIMATE_H
 
+#include <iostream>
+#include <string>
 #include <fstream>
 
 
@@ -11,13 +13,9 @@ class climate
     public:
         climate();
 
-        //currently are just using local variables
-        //should use file io to write this to a file so
-        //that it is static.
         double getHumidity();
         double getFreezerTemp();
         double getFridgeTemp();
-
 
         void setHumidity(double);
         void setFreezerTemp(double);
@@ -25,11 +23,7 @@ class climate
 
         //humidty, freezer, fridge
         void writeFile(double, double, double);
-
-        //could be helpful with future case where we want to show users a
-        //summary/dashboard of their fridge. log with timestamp and temps.
-        //could be added to cron job to repeatedly log this.
-
+        double readFile(std::ifstream&, int);
 
         //couts humidity and temps in formated text.
         void printClimate();
@@ -39,6 +33,10 @@ class climate
     private:
 
         bool checkFile();
+
+        //could be helpful with future case where we want to show users a
+        //summary/dashboard of their fridge. log with timestamp and temps.
+        //could be added to cron job to repeatedly log this.
         void writeToLog();
 
 

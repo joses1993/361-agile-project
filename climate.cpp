@@ -1,6 +1,5 @@
 #include "climate.h"
-#include <iostream>
-#include <string>
+
 
 using namespace std;
 
@@ -104,3 +103,16 @@ void climate::writeFile(double hum, double freezer, double fridge)
         outFile << freezer << endl;
         outFile << fridge << endl;
 }
+
+//1 for humidity, 2 for freezer, 3 for fridge
+//double climate::readFile(ifstream& file, int item)
+//{
+//    double temp;
+//
+//    for(int x = 0; x < item; x++)
+//    {
+//        file >> temp;
+//        cout << temp + 1 << endl;
+//    }
+//    return temp;
+//}
